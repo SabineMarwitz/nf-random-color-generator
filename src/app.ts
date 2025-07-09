@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-// create a random rgb color and return as ColorInstance
+// create a random hex color string and return as ColorInstance in rgb format
 function getRandomColor() {
   const hexCharacters = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F",];
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.json({
     hex: `${myColor.hex()}`,
     rgb: `${myColor}`,
-    hsl: `${myColor.hsl()}`,
+    hsl: myColor.hsl().string(0),
   });
 });
 
